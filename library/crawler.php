@@ -166,6 +166,9 @@ class Crawler extends ICrawler
     */
     public function show()
     {
+        if(!sizeof($this->seen_urls))
+            return false;
+        
         //sort by imgs count
         array_multisort($this->seen_urls);
         
@@ -177,6 +180,8 @@ class Crawler extends ICrawler
         
         //save report
         $this->save_report();
+        
+        return true;
     }
     
     /**
